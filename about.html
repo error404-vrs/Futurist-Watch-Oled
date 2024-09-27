@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Futuristic Watch</title>
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about">
+        <h1>About Our Watch</h1>
+        <p class="typewriter">Our futuristic watch merges style with cutting-edge technology...</p>
+
+        <button class="info-button" onclick="toggleDetails()">Discover More</button>
+        <div class="extra-details" id="extraDetails">
+            <h2>Impact and Innovation</h2>
+            <p>Discover how our product revolutionizes wearable gadgets and our interaction with technology.</p>
+
+            <h2>Advanced Technology</h2>
+            <h3>Key Benefits</h3>
+            <ul class="tech-list">
+                <li onmouseover="showNotification('Stunning Display')"><strong>Stunning Display</strong>: OLED with optimal image quality.</li>
+                <li onmouseover="showNotification('AI Processor')"><strong>AI Processor</strong>: Responsive and intuitive performance.</li>
+                <li onmouseover="showNotification('Eco-Friendly')"><strong>Eco-Friendly</strong>: Solar-powered for sustainable use.</li>
+                <li onmouseover="showNotification('Project')"><strong>Project</strong>: Watch can project games, movies, and more.</li>
+                <li onmouseover="showNotification('AI for build')"><strong>AI for build</strong>: An AI tells you how to make what you want.</li>
+            </ul>
+        </div>
+
+        <h2>Vision for the Future</h2>
+        <p>We envision a world where every watch is an extension of oneself, connected and interactive, enhancing your lifestyle.</p>
+        
+        <button id="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+        <button id="modal-trigger" onclick="openModal()">Open Future Vision</button>
+        <button id="scroll-top" onclick="scrollToTop()">Back to Top</button>
+    </section>
+
+    <div id="notification" class="notification"></div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Our Vision for the Future</h2>
+            <p>Imagine a future where watches do more than just tell time.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Futuristic Watch. All rights reserved. Nolann Domas creator.</p>
+    </footer>
+
+    <script>
+        function toggleDetails() {
+            const details = document.getElementById('extraDetails');
+            details.classList.toggle('active');
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.innerText = message;
+            notification.classList.add('visible');
+            setTimeout(() => {
+                notification.classList.remove('visible');
+            }, 2000);
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+        }
+
+        function openModal() {
+            document.getElementById('modal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Typewriter effect
+        const texts = document.querySelectorAll('.typewriter');
+        texts.forEach(text => {
+            let content = text.innerHTML;
+            text.innerHTML = '';
+            let index = 0;
+            function type() {
+                if (index < content.length) {
+                    text.innerHTML += content.charAt(index);
+                    index++;
+                    setTimeout(type, 50);
+                }
+            }
+            type();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Watch</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#features">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#future-vision" onclick="openModal()">Vision</a></li>
+                <li><a href="contact.html" onclick="showNotification('Contact us for more info!')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Watch of Tomorrow</h1>
+            <p>A blend of style and innovative technology on your wrist.</p>
+            <a href="#features" class="btn" onmouseover="highlightBtn(this)" onmouseout="resetBtn(this)">Explore Features</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Key Features</h2>
+        <div class="features-list">
+            <div class="feature-item" onmouseover="showNotification('OLED screen offering vibrant colors and clarity.')" onmouseout="hideNotification()" onclick="openModal()">
+                <h3>Advanced Display</h3>
+                <p>OLED screen offering vibrant colors and clarity.</p>
+            </div>
+            <div class="feature-item" onmouseover="showNotification('Your personal assistant learns from you.')" onmouseout="hideNotification()" onclick="openModal()">
+                <h3>AI Integration</h3>
+                <p>Your personal assistant that learns from you.</p>
+            </div>
+            <div class="feature-item" onmouseover="showNotification('Solar-powered charging for long-lasting usage.')" onmouseout="hideNotification()" onclick="openModal()">
+                <h3>Sustainable Energy</h3>
+                <p>Solar-powered charging for long-lasting usage.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="carousel" class="gallery">
+        <h2>Gallery</h2>
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="futuristic-hologram-smartwatch-wearable-technology.jpg">
+                <img src="Design sans titre.png">
+                <img src="watch.jpg">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8">
+                <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0">
+            </div>
+            <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Futuristic Watch. All rights reserved. Nolann Domas creator.</p>
+    </footer>
+
+    <div id="notification" class="notification">Notification</div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Our Vision for the Future</h2>
+            <p>Imagine a future where watches do more than just tell time. With AI integration and sustainable energy, our futuristic watch adapts to you and your environment.</p>
+            <p>Join us in this journey towards innovation!</p>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+
+        const moveSlide = (direction) => {
+            const slides = document.querySelectorAll('.carousel-images img');
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            const offset = -currentSlide * 100;
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        }
+
+        function highlightBtn(btn) {
+            btn.style.transform = 'scale(1.1)';
+        }
+
+        function resetBtn(btn) {
+            btn.style.transform = 'scale(1)';
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.innerText = message;
+            notification.classList.add('visible');
+            setTimeout(() => {
+                notification.classList.remove('visible');
+            }, 2000);
+        }
+
+        function hideNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('visible');
+        }
+
+        function openModal() {
+            document.getElementById('modal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+    </script>
+</body>
+</html>
